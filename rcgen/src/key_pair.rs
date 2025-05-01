@@ -198,7 +198,8 @@ impl KeyPair {
 	) -> Result<Self, Error> {
 		let private_key = pem::parse(pem_str)._err()?;
 		let private_key_der: &[_] = private_key.contents();
-		Self::from_pkcs8_der_and_sign_algo(&PrivatePkcs8KeyDer::from(private_key_der), alg)
+		let x=Self::from_pkcs8_der_and_sign_algo(&PrivatePkcs8KeyDer::from(private_key_der), alg);
+		x
 	}
 
 	/// Obtains the key pair from a DER formatted key using the specified [`SignatureAlgorithm`]
@@ -289,10 +290,11 @@ impl KeyPair {
 	) -> Result<Self, Error> {
 		let private_key = pem::parse(pem_str)._err()?;
 		let private_key: &[_] = private_key.contents();
-		Self::from_der_and_sign_algo(
+		let x=Self::from_der_and_sign_algo(
 			&PrivateKeyDer::try_from(private_key).map_err(|_| Error::CouldNotParseKeyPair)?,
 			alg,
-		)
+		);
+		x
 	}
 
 	/// Obtains the key pair from a DER formatted key
