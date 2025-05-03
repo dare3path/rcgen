@@ -5,9 +5,11 @@ resolver = "2"
 [workspace.dependencies]
 aws-lc-rs = { version = "1.6.0", default-features = false }
 pem = "3.0.2"
-pki-types = { package = "rustls-pki-types", version = "1.4.1", features=["trace_drop_and_zeroize"] }
-ring = { version="0.17", features=["trace_drop_and_zeroize"] }
 x509-parser = "0.17"
+
+#XXX: using 'my_fork' feature ensures the current crate uses the dep from the fork and allows that fork to control any extra features like tracing.
+pki-types = { package = "rustls-pki-types", version = "1.4.1", features=["my_fork"] }
+ring = { version="0.17", features=["my_fork"] }
 
 [workspace.package]
 license = "MIT OR Apache-2.0"
