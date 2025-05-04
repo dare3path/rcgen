@@ -20,6 +20,17 @@ repository = "https://github.com/rustls/rcgen"
 keywords = ["mkcert", "ca", "certificate"]
 
 
+[profile.dev]
+opt-level = 0
+debug = 1 #keep size down
+debug-assertions = true
+overflow-checks = true
+lto = false
+panic = 'unwind'
+incremental = true
+codegen-units = 256
+rpath = false
+
 [patch.crates-io]
 ring = { path = "/home/user/SOURCE/github/modified_forks/ring" } #patched to zeroize on drop
 rustls-pki-types = { path = "/home/user/SOURCE/github/modified_forks/pki-types" } #patched with ./zeroize_on_drop.patch
