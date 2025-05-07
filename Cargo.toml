@@ -33,6 +33,11 @@ rpath = false
 
 [patch.crates-io]
 ring = { path = "/home/user/SOURCE/github/modified_forks/ring" } #patched to zeroize on drop
+#XXX: if you're not me, you'll want this instead (or clone this locally in a path and change the path above to reflect where u've cloned it):
+#ring = { git="https://github.com/dare3path/ring", branch="zeroize_on_drop" }
+
 rustls-pki-types = { path = "/home/user/SOURCE/github/modified_forks/pki-types" } #patched with ./zeroize_on_drop.patch
+#XXX: if you're not me, you'll want this instead (or clone this locally in a path and change the path above to reflect where u've cloned it):
+#rustls-pki-types = { git = "https://github.com/dare3path/pki-types", branch="zeroize_on_drop" }
 
 
